@@ -1,0 +1,85 @@
+/* .................speedo meter................ */
+.gauge-wrapper {
+  position: relative;
+  width: 16rem;
+  height: 8rem;
+  overflow: hidden;
+}
+
+.gauge {
+  width: 16rem;
+  height: 16rem;
+  padding: 1.25rem;
+  background:
+    radial-gradient(#fff 0 0) content-box,
+    conic-gradient(
+      from -90deg,
+      var(--error-80) 0deg,
+      var(--error-40) 30deg,
+      var(--warning-85) 90deg,
+      var(--warning-100) 120deg,
+      var(--green-20) 150deg,
+      var(--green-70) 180deg,
+      #fff 180deg 360deg
+    );
+  border-radius: 50%;
+  position: relative;
+}
+
+.gauge-inner {
+  position: absolute;
+  width: 9.25rem;
+  height: 9.25rem;
+  background: var(--rm-background);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px -3px 4px rgba(71, 84, 103, 0.12);
+  z-index: 10;
+}
+
+/* Needle */
+.needle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: bottom center;
+  z-index: 9;
+  /* Smooth transitions for subsequent updates */
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  /* GPU acceleration */
+  will-change: transform;
+}
+
+.needle-head {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 6.5rem solid #222;
+  border-top: 0.25rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  left: 0;
+  top: -0.25rem;
+}
+
+.gauge-center {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 11;
+}
+
+.gauge-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.gauge-label {
+  font-size: 0.75rem;
+  color: var(--green-80);
+  font-weight: 500;
+}
